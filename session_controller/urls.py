@@ -1,4 +1,4 @@
-from rest_framework.routers import DefaultRouter #те роутеры, к которым можно обращаться за данными
+from rest_framework.routers import DefaultRouter
 from .views import SessionViewSet, CompetencyViewSet, AssessmentViewSet, UserProfileViewSet
 
 router = DefaultRouter()

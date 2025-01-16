@@ -1,4 +1,4 @@
-from django.apps import AppConfig #автомат
+from django.apps import AppConfig
 
 
 class SessionControllerConfig(AppConfig):
