@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block content %}
+<section class="auth-section">
+	{% if user.is_authenticated %}
+
+	<p>Привет, {{ user.username|upper|truncatechars:25}}, {{ text }}</p>
+	{% if user.profile %}
+	<li><a href="{% url 'profile_detail' user.profile.id %}">Мой профиль</a></li>
+	{% else %}
+	<li>Профиль не найден</li>
+	{% endif %}
+	
+	<li><a href="{% url 'logout' %}">Выход</a></li>
+	{% else %}
+	<p>Пожалуйста, войдите в систему.</p>
+	<li><a href="{% url 'login' %}">Войти</a></li>
+	{% endif %}
+
+</section>
+{% load custom_tags %}
+<section class="search-input-container">
+	<button id="get-session-count-btn">Получить количество сессий</button>
+	<div id="session-count-results"></div>
+	<form method="get" action="{% url 'home' %}">
+		<input type="text" name="query" placeholder="Поиск...">
+		<button type="submit">Найти</button>
+	</form>
+</section>
+
+<div class="container">
+	<!-- Виджет активных сессий -->
+	<div class="widget">
+		<h2><a href="{% url 'all_sessions' %}">Активные сессии</a></h2>
+		<ul>
+			{% for session in active_sessions %}
+			<li>
+				<span>{{ forloop.counter }}. </span>
+				<a href="{% url 'session_detail' session.id %}">{{ session.title }}</a>
+				<p>Оцениваемый: {{ session.evaluated.username }}</p>
+				<p>Создано: {{ session.created_at|date:"d.m.Y" }}</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<!-- Виджет текущих проектов -->
+	<div class="widget">
+		<h2><a href="{% url 'all_projects' %}">Текущие проекты</a></h2>
+		<ul>
+			{% for project in current_projects %}
+			<li>
+				<span>{{ forloop.counter }}. </span>
+				<a href="{% url 'project_detail' project.id %}">{{ project.name }}</a>
+				<p>Начало: {{ project.start_date|date:"d.m.Y" }}</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<!-- Виджет популярных компетенций -->
+	<div class="widget">
+		<h2><a href="{% url 'all_competencies' %}">Популярные компетенции</a></h2>
+		<ul>
+			{% for competency in top_competencies %}
+			<li>
+				<span>{{ forloop.counter }}. </span>
+				<a href="{% url 'competency_detail' competency.id %}">{{ competency.name }}</a>
+				<p>Связано с {{ competency.session_count }} сессиями</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+<script>
+	document.getElementById("get-session-count-btn").addEventListener("click", function () {
+		fetch("api/get_session_count/", {
+			method: "GET",
+			headers: {
+				"X-Requested-With": "XMLHttpRequest"
+			}
+		})
+			.then(response => response.json())
+			.then(data => {
+				const resultsContainer = document.getElementById("session-count-results");
+				resultsContainer.innerHTML = "";  // Очистка старых данных
+				if (data.session_count !== undefined) {
+					const sessionElement = document.createElement("p");
+					sessionElement.textContent = `Общее количество сессий: ${data.session_count}`;
+					resultsContainer.appendChild(sessionElement);
+				}
+			})
+			.catch(error => {
+				console.error("Ошибка запроса:", error);
+			});
+	});
+</script>
+{% endblock %}

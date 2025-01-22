@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменить аватар</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Изменить аватар</h1>
+        
+        <div class="card p-4 shadow-sm">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Используем блок для улучшения отображения формы -->
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            </form>
+        </div>
+
+        <!-- Ссылка для возвращения к профилю -->
+        <div class="mt-3">
+            <a href="{% url 'profile_detail' pk=request.user.profile.id %}" class="btn btn-link">Назад к профилю</a>
+        </div>
+    </div>
+
+    <!-- Подключаем Bootstrap JS (необязательно, но полезно для интерактивных элементов) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

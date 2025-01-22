@@ -1,0 +1,144 @@
+.search-input-container {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+}
+
+#get-session-count-btn {
+	background-color: #4CAF50;
+	/* Зеленый */
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+#get-session-count-btn:hover {
+	background-color: #45a049;
+	/* Темно-зеленый */
+}
+
+/* Стили для контейнера результатов */
+#session-count-results {
+	margin-top: 20px;
+	font-size: 18px;
+	color: #333;
+}
+
+/* Стили для формы поиска */
+form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid #ddd;
+	padding: 10px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+input[type="text"] {
+	padding: 8px;
+	font-size: 16px;
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+button[type="submit"] {
+	/* background-color: #007BFF;  */
+	color: white;
+	padding: 10px 15px;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+	background-color: #0056b3;
+	/* Темно-синий */
+}
+
+/* Основные стили для секции с пользователем */
+.auth-section {
+	display: flex;
+	width: 100%;
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 8px;
+	/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+	align-items: center;
+	justify-content: center;
+}
+
+/* Стили для приветственного текста */
+.auth-section p {
+	font-size: 18px;
+	color: #333;
+	margin-top: 10px;
+}
+
+/* Стили для списков в секции */
+.auth-section li {
+	list-style-type: none;
+	margin: 8px 0;
+}
+
+/* Стили для ссылок */
+.auth-section a {
+	color: #000000;
+	text-decoration: none;
+	font-size: 16px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 10px;
+	transition: color 0.3s ease;
+}
+
+.auth-section a:hover {
+	color: #0056b3;
+}
+
+/* Стили для сообщений о статусе профиля */
+.auth-section li:first-of-type {
+	font-weight: bold;
+	color: #333;
+}
+
+.auth-section li {
+	font-size: 16px;
+	color: #555;
+}
+
+/* Стиль для текста о том, что пользователь не вошел */
+.auth-section p:first-of-type {
+	font-size: 18px;
+	color: #000000;
+	font-weight: bold;
+}
+
+/* Стили для кнопок, если они используются */
+button {
+	background-color: #000000;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+}
+
+button:hover {
+	background-color: #0056b3;
+}

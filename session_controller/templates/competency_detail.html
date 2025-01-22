@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}<h1>{{ competency.name }}</h1>
+<p>Связано с {{ competency.session_count }} сессиями</p>
+<p>Описание: {{ competency.description }}</p>
+{% endblock %}

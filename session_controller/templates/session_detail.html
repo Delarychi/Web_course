@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}<h1>{{ session.title }}</h1>
+<p>Оцениваемый: {{ session.evaluated.username }}</p>
+<p>Создано: {{ session.created_at|date:"d.m.Y" }}</p>
+<p>Описание: {{ session.description }}</p>
+
+{% endblock %}

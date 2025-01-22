@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}Мой сайт{% endblock %}</title>
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/widgets.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+</head>
+
+<body>
+	<nav>
+			<ul>
+				<li><a href="{% url 'home' %}">Главная</a></li>
+				<li><a href="{% url 'all_sessions' %}">Все сессии</a></li>
+				<li><a href="{% url 'all_projects' %}">Все проекты</a></li>
+				<li><a href="{% url 'all_competencies' %}">Все компетенции</a></li>
+				<li><a href="{% url 'visit_logs' %}">Логи</a></li>
+			</ul>
+	</nav>
+	<div class="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+
+</html>

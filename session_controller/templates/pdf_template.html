@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Резюме</title>
+</head>
+<body>
+    {% for profile in profiles %}
+        <h2>Профиль пользователя: {{ profile.user.username }}</h2>
+        <p>Полное имя: {{ profile.full_name }}</p>
+        <p>Отдел: {{ profile.department }}</p>
+        <p>Роль: {{ profile.role }}</p>
+        <p>Дата найма: {{ profile.hire_date }}</p>
+        <hr>
+    {% endfor %}
+</body>
+</html>

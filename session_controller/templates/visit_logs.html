@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="mb-4">Логи посещений</h1>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Пользователь</th>
+			<th>URL</th>
+			<th>Метод</th>
+			<th>Время</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for log in logs %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ log.user.username }}</td>
+			<td>{{ log.path }}</td>
+			<td>{{ log.method }}</td>
+			<td>{{ log.timestamp }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

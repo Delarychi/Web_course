@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Профиль пользователя: {{ profile.full_name }}</h1>
+<div class="details-container">
+	<p><strong>Имя пользователя:</strong> {{ profile.user.username }}</p>
+	<p><strong>Отдел:</strong> {{ profile.department }}</p>
+	<p><strong>Роль:</strong> {{ profile.get_role_display }}</p>
+	<p><strong>Дата найма:</strong> {{ profile.hire_date }}</p>
+	<p><strong>Портфолио:</strong> <a href="{{ profile.portfolio }}">{{ profile.portfolio }}</a></p>
+</div>
+
+<div class="actions-container">
+	{% if profile.avatar %}
+	<p><strong>Аватар:</strong></p>
+	<img src="{{ profile.avatar.url }}" alt="Аватар" width="150" height="150">
+	{% else %}
+	<p>Аватар не установлен.</p>
+	{% endif %}
+
+	<a href="{% url 'edit_avatar' %}">Изменить аватар</a>
+	<a href="{% url 'profile_edit' pk=profile.id %}">Редактировать</a> |
+	<a style="
+	background-color: #be4242;" href="{% url 'profile_delete' pk=profile.id %}">Удалить</a>
+</div>
+
+{% endblock %}
